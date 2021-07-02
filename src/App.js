@@ -1,22 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Restrictedpage from "./Components/Restrictedpage";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedin, setLoggedin] = useState(0);
+  const user = "Rafael";
+
+  const Login = () => {
+    setLoggedin(true);
+  };
+  const Logout = () => {
+    setLoggedin(false);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Restrictedpage
+          Logout={Logout}
+          user={user}
+          isLoggedin={isLoggedin}
+          Login={Login}
+        ></Restrictedpage>
       </header>
     </div>
   );
